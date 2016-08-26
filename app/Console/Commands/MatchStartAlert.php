@@ -11,7 +11,7 @@ class MatchStartAlert extends Command
      *
      * @var string
      */
-    protected $signature = 'alert:start_match';
+    protected $signature = 'alert:match_start';
 
     /**
      * The console command description.

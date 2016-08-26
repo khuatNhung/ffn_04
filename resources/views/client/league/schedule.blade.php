@@ -1,10 +1,26 @@
 @extends($clientLayout)
 @section('content')
     <div class="row league-navigation">
-        <span class="league-navigation-detail"><a href="{{ route('leagues.show', ['id' => $schedule['league']['id']]) }}">{{ $schedule['league']['name'] }}</a></span>
-        <span class="league-navigation-detail"><a href="{{ route('leagues.{id}.ranks.index', ['id' => $schedule['league']['id']]) }}">{{ trans('label.rank') }}</a></span>
-        <span class="league-navigation-detail"><a href="{{ route('leagues.{id}.schedules.index', ['id' => $schedule['league']['id']]) }}">{{ trans('label.schedule') }}</a></span>
-        <span class="league-navigation-detail"><a href="{{ route('leagues.{id}.results.index', ['id' => $schedule['league']['id']]) }}">{{ trans('label.result') }}</a></span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.show', ['id' => $schedule['league']['id']]) }}">
+                {{ $schedule['league']['name'] }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.ranks.index', ['id' => $schedule['league']['id']]) }}">
+                {{ trans('label.rank') }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.schedules.index', ['id' => $schedule['league']['id']]) }}">
+                {{ trans('label.schedule') }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.results.index', ['id' => $schedule['league']['id']]) }}">
+                {{ trans('label.result') }}
+            </a>
+        </span>
     </div>
     <div class="page-header">
         <h2>{{ trans('label.schedule') }}</h2>
@@ -34,7 +50,7 @@
                             <tbody>
                                 @foreach ($schedule as $match)
                                     <tr>
-                                        <td>{{ $match['start_time'] }}</td>
+                                        <td><a href="{{ route('matches.show', ['id' => $match['id']]) }}">{{ $match['start_time'] }}</a> </td>
                                         <td>{{ $match['team1']['name'] }}</td>
                                         <td>{{ trans('label.vs') }}</td>
                                         <td>{{ $match['team2']['name'] }}</td>

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Repositories\User\UserRepository;
 use File;
 use DB;
+use Exception;
 
 class PostRepository implements PostRepositoryInterface
 {
@@ -159,6 +160,25 @@ class PostRepository implements PostRepositoryInterface
     {
         try {
             $posts = $this->model->with('user')->isPosted()->latest('published_at')->published()->take(config('news.latest_posts'))->get();
+
+            foreach ($posts as $key => $post) {
+                $posts[$key]['time_ago'] = $post['published_at']->diffForHumans();
+            }
+
+            return $posts;
+        } catch (Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+
+    public function leaguePosts($leagueId)
+    {
+        try {
+            $posts = $this->model->isPosted()->latest('published_at')
+                ->where('league_id', $leagueId)
+                ->published()
+                ->orderBy('published_at', 'desc')
+                ->paginate(config('news.posts_per_page'));
 
             foreach ($posts as $key => $post) {
                 $posts[$key]['time_ago'] = $post['published_at']->diffForHumans();

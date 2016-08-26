@@ -1,4 +1,4 @@
-@extends($layout)
+@extends($clientLayout)
 @section("content")
     <div class="page-header">
         <h2>{{ trans('label.team_profile') }}</h2>

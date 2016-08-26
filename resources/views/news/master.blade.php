@@ -8,6 +8,7 @@
     {!! Html::style('/css/custom.css') !!}
     {!! Html::style('/bower/sweetalert/dist/sweetalert.css') !!}
     {!! Html::style('/css/comment.css') !!}
+    {!! Html::style('/css/app.css') !!}
     <meta name="csrf_token" content="{{ csrf_token() }}">
     @yield('style')
 </head>

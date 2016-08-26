@@ -58,5 +58,6 @@ return [
     'thanks' => 'Thank you for your participation betting game.',
     'bet_team' => 'You have to bet the team :team',
     'bet_result' => 'The result is your bet :result',
-    'bet_point' => 'Total points accumulated in your account is :point'
+    'bet_point' => 'Total points accumulated in your account is :point',
+    'hello_user' => 'Hello new user, welcome to FFN site',
 ];

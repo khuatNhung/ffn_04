@@ -27,10 +27,6 @@ class UserMessageController extends Controller
         ];
         $messages = $this->messageRepository->all($options);
 
-        if (isset($messages['error'])) {
-            return response()->json(['error' => ($messages['error'])]);
-        }
-
         $user = $this->userRepository->show($userId);
 
         if (isset($user['error'])) {

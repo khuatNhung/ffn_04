@@ -31,6 +31,19 @@ var Message = React.createClass({
                         </a>
                     </li>
                 );
+            case messageTypes['user_event']:
+                return (
+                    <li className={'message read-' + this.props.read} id={this.props.id}>
+                        <a className={'read-' + this.props.read} href="/home">
+                            <span className="image">
+                                <img src={defaultData}/>
+                            </span>
+                            <span className="message-content">
+                                {this.props.children.toString()}
+                            </span>
+                        </a>
+                    </li>
+                );
         }
     }
 });

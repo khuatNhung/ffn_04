@@ -2,9 +2,10 @@
 
 @section('content')
 <div class="container">
+    @include('client.league.league-navigation')
     <div class="row">
         <div class="col-md-7">
-            @if (count($posts))
+            @if (count($posts))N
                 @foreach ($posts as $post)
                     <div class="news-border row">
                         <div class="single-post col-md-4">
@@ -40,28 +41,6 @@
                 @endforeach
             @endif
             {{ $posts->render() }}
-        </div>
-        <div class="col-md-5 recent-matches">
-            <div class="bg-purple recent-matches-title">{{ trans('label.next_matches') }}</div>
-            <div class="recent-matches-content">
-                @if (count($recentMatches))
-                    @foreach ($recentMatches as $match)
-                        <div class="match-box">
-                            <span>
-                                <img class="match-image pull-left" src="{{ asset(config('common.football.default_image')) }}">
-                            </span>
-                            <span class="match-content pull-left">
-                                <span>
-                                    <a href="{{ route('matches.show', ['id' => $match['id']]) }}">
-                                        {{ $match['name'] }}
-                                    </a>
-                                </span><br>
-                                <span>{{ $match['start_time'] }}</span>
-                            </span>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
         </div>
     </div>
 </div>

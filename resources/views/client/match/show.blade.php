@@ -1,4 +1,4 @@
-@extends($layout)
+@extends($clientLayout)
 @section('content')
     <div class="col-sm-8">
         <div class="schedule">
@@ -10,9 +10,9 @@
                     <div class="team-name">{{ $match['team1']['name'] }}</div>
                 </div>
                 <div class="score">
-                    <div class="team-score">{{ $match['score_team1'] }}</div>
+                    <div class="team-score">{{ $match['score_team1'] or 0 }}</div>
                     <div class="vs">{{ trans('label.vs') }}</div>
-                    <div class="team-score">{{ $match['score_team2'] }}</div>
+                    <div class="team-score">{{ $match['score_team2'] or 0 }}</div>
                 </div>
                 <div class="team">
                     <img class="logo" alt="{{ $match['team2']['name'] }}"

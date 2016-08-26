@@ -1,5 +1,28 @@
-@extends($layout)
+@extends($clientLayout)
 @section('content')
+    <div class="row league-navigation">
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.show', ['id' => $result['league']['id']]) }}">
+                $result['league']['name'] }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.ranks.index', ['id' => $result['league']['id']]) }}">
+                {{ trans('label.rank') }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.schedules.index', ['id' => $result['league']['id']]) }}">
+                {{ trans('label.schedule') }}
+            </a>
+        </span>
+        <span class="league-navigation-detail">
+            <a href="{{ route('leagues.{id}.results.index', ['id' => $result['league']['id']]) }}">
+                {{ trans('label.result') }}
+            </a>
+        </span>
+    </div>
+
     <div class="page-header">
         <h2>{{ trans('label.result') }}</h2>
     </div>

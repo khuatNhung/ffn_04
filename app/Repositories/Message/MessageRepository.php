@@ -70,11 +70,14 @@ class MessageRepository extends BaseRepository implements MessageRepositoryInter
                                 ];
                             }
                         }
-                        $this->model->insert($messages);
+
+                        $data = $this->model->insert($messages);
 
                         // update unread message number for all users
                         $additionalUnreadMessage = count($matches);
                         $this->userRepository->increaseMessage($users, $additionalUnreadMessage);
+
+                        return $data;
                     }
                 }
             }
@@ -104,12 +107,23 @@ class MessageRepository extends BaseRepository implements MessageRepositoryInter
             }
 
             $additionalUnreadAdminMessage = 1;
-            $admins = $this->userRepository->whereRole(config('common.type.admin'));
-            $this->userRepository->increaseMessage($admins, $additionalUnreadAdminMessage);
+            User::find($input['user_id'])->increment('unread_message_number', $additionalUnreadAdminMessage);
 
             return $data;
         } catch (Exception $ex) {
             return ['error' => $ex->getMessage()];
         }
+    }
+
+    public function createMessageToNewUser($user)
+    {
+        $data = [
+            'user_id' => $user['id'],
+            'content' => trans('message.hello_user'),
+            'type' => config('common.message.type.user_event'),
+            'target' => $user['id'],
+        ];
+
+        $this->store($data);
     }
 }

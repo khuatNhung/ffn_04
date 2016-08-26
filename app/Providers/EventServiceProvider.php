@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\UserCreated;
+use App\Models\User;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -19,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CreateBet' => [
             'App\Listeners\CreateBetListener',
         ],
+        'App\Events\UserCreated' => [
+            'App\Listeners\UserCreatedListener',
+        ],
     ];
 
     /**
@@ -31,6 +36,8 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 
-        //
+        User::created(function($user) {
+            event(new UserCreated($user));
+        });
     }
 }

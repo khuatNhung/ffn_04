@@ -42,8 +42,7 @@
                     </li>
                     <li><a><i class="fa fa-comments"></i>{{ trans('label.post') }}<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="#">{{ trans('label.post') }}</a></li>
-                            <li><a href="#">{{ trans('label.comment') }}</a></li>
+                            <li><a href="{{ route('admin.posts.index') }}">{{ trans('label.post') }}</a></li>
                         </ul>
                     </li>
                 </ul>

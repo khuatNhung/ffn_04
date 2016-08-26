@@ -12,6 +12,10 @@
 {!! Html::script('/bower/react/react-dom.min.js') !!}
 {!! Html::script('/bower/react/react-dom-server.min.js') !!}
 {!! Html::script('/bower/react/react-with-addons.min.js') !!}
+{!! Html::script('/bower/masonry/dist/masonry.pkgd.min.js') !!}
+{!! Html::script('/bower/sweetalert/dist/sweetalert.min.js') !!}
+{!! Html::script('/js/comment_facebook.js') !!}
+{!! Html::script('/js/comment.js') !!}
 {!! Html::script('js/message.js', ['type' => 'text/babel']) !!}
 {!! Html::script('js/all.js') !!}
 {!! Html::script('js/validate.js') !!}
